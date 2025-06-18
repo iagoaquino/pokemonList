@@ -9,19 +9,19 @@ import {
 @Injectable({ providedIn: 'root' })
 export default class DataStorager {
   constructor() {}
-  private DataStored: Record<string, any> = {};
+  private data_stored: Record<string, any> = {};
 
   //Main functions
 
   public getPokemonsCurrentData() {
-    return this.DataStored;
+    return this.data_stored;
   }
 
   async updateDataStorager(pokemonsData: Array<Record<string, any>>) {
     for (let info of pokemonsData) {
-      this.DataStored[info['name']] = await this.getPokemonData(info);
+      this.data_stored[info['name']] = await this.getPokemonData(info);
     }
-    return this.DataStored;
+    return this.data_stored;
   }
 
   //SubFunctions
