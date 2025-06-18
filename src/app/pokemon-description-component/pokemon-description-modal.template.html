@@ -1,0 +1,53 @@
+<ng-content>
+  <ion-modal [isOpen]="is_open">
+    <ng-template>
+      <ion-header>
+        <ion-toolbar>
+          <ion-title class="text-center">{{pokemon_name}}</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="ion-padding">
+        <ion-row class="ion-justify-content-center">
+          <ion-col size="5">
+            <ion-img
+              src="{{pokemon_info[0]['sprites']['front_default']}}"
+              style="height: 200px"
+            ></ion-img>
+          </ion-col>
+          <ion-col size="5">
+            <ion-img
+              src="{{pokemon_info[0]['sprites']['back_default']}}"
+              style="height: 200px"
+            ></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col
+            *ngFor="let type of pokemon_info[0]['types']"
+            size="{{12/pokemon_info[0]['types'].length}}"
+          >
+            <ion-row class="ion-justify-content-center">
+              <ion-button class="{{type}}" (click)="setOpen(false)"
+                >{{type}}
+              </ion-button>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-col
+            class="text-center"
+            *ngFor="let stat of pokemon_info[0]['stats'] | keyvalue"
+            size="6"
+            sizeSm="6"
+          >
+            <ion-row class="ion-justify-content-center">{{stat.key}}</ion-row>
+            <ion-row class="ion-justify-content-center">{{stat.value}}</ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-justify-content-center">
+          <ion-button (click)="setOpen(false)">Close</ion-button>
+        </ion-row>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ng-content>
