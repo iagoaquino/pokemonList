@@ -19,8 +19,4 @@ export default class PokemonDescriptionModal {
   setOpen(is_open: boolean) {
     this.modalHandler.emit(is_open);
   }
-
-  ngOnInit() {
-    console.log(this.pokemon_info);
-  }
 }
