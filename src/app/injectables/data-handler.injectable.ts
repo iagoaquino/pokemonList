@@ -9,7 +9,7 @@ export default class ApiHandler {
     const response = await (
       await fetch(`https://pokeapi.co/api/v2/pokemon?limit=12&offset=${offset}`)
     ).json();
-    this.data_storager.updateDataStorager(response['results']);
+    await this.data_storager.updateDataStorager(response['results']);
     return response;
   }
 

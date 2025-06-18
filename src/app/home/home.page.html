@@ -11,6 +11,7 @@
           img_url="{{pokemon_data[pokemon['name']]['sprites']['front_default']}}"
           name="{{pokemon['name']}}"
           main_type="{{pokemon_data[pokemon['name']]['types'][0]}}"
+          [pokemon_info]="pokemon_data[pokemon['name']]"
         >
         </card-container> </ion-col
     ></ion-row>

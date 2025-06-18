@@ -26,7 +26,5 @@ export default class HomePage {
   async ngOnInit() {
     this.pokemon_list = (await this.api_handler.getPokemonList())['results'];
     this.pokemon_data = this.api_handler.getDataStored();
-    console.log(this.pokemon_list);
-    console.log(this.pokemon_data);
   }
 }
