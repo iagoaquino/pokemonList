@@ -1,5 +1,27 @@
 <ion-content>
   <ion-grid [fixed]="true">
+    <ion-row>
+      <ion-col class="text-center" size="6">
+        <ion-button
+          (click)="navigationHandler('prev')"
+          *ngIf="prev_url;else beginingOfList"
+          >Prev</ion-button
+        >
+        <ng-template #beginingOfList>
+          <ion-button [disabled]="true">Prev</ion-button></ng-template
+        >
+      </ion-col>
+      <ion-col class="text-center" size="6">
+        <ion-button
+          (click)="navigationHandler('next')"
+          *ngIf="next_url;else endOfList"
+          >Next</ion-button
+        >
+        <ng-template #endOfList>
+          <ion-button [disabled]="true">Next</ion-button></ng-template
+        >
+      </ion-col>
+    </ion-row>
     <ion-row
       ><ion-col
         *ngFor="for let pokemon of pokemon_list"
