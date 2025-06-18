@@ -3,5 +3,12 @@
     <ion-img src="{{img_url}}" alt="{{name}} images"></ion-img>
   </ion-card-header>
   <ion-card-content>{{name}} </ion-card-content>
+  <pokemon-description-modal
+    (modalHandler)="modalHandler($event)"
+    [is_open]="is_open"
+    [pokemon_info]="[pokemon_info]"
+    pokemon_name="{{name}}"
+  ></pokemon-description-modal>
+  <ion-button (click)="modalHandler(true)">Description</ion-button>
   <ng-content></ng-content>
 </ion-card>
