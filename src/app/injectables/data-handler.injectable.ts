@@ -1,17 +1,33 @@
 import { Injectable } from '@angular/core';
 import DataStorager from './data-storager.injectable';
+import FavoriteStorager from './favorite-storager.injectable';
 
 @Injectable()
-export default class ApiHandler {
-  constructor(private data_storager: DataStorager) {}
+export default class DataHandler {
+  constructor(
+    private data_storager: DataStorager,
+    private favorite_list_handler: FavoriteStorager
+  ) {}
 
   async getPokemonData(url: string | null) {
     const response = await (await fetch(url as string)).json();
-    await this.data_storager.updateDataStorager(response['results']);
+    await this.data_storager.updateDataStoraged(response['results']);
     return response;
   }
 
   public getDataStored() {
     return this.data_storager.getPokemonsCurrentData();
+  }
+
+  public getFavoriteList() {
+    return this.favorite_list_handler.get_list();
+  }
+
+  public deleteFavorite(pokemon_name: string) {
+    this.favorite_list_handler.delete_one(pokemon_name);
+  }
+
+  public addNewFavorite(pokemon_name: string) {
+    this.favorite_list_handler.insert_new(pokemon_name);
   }
 }

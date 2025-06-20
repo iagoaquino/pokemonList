@@ -10,14 +10,13 @@ import {
 export default class DataStorager {
   constructor() {}
   private data_stored: Record<string, any> = {};
-
   //Main functions
 
   public getPokemonsCurrentData() {
     return this.data_stored;
   }
 
-  async updateDataStorager(pokemonsData: Array<Record<string, any>>) {
+  async updateDataStoraged(pokemonsData: Array<Record<string, any>>) {
     for (let info of pokemonsData) {
       this.data_stored[info['name']] = await this.getPokemonData(info);
     }

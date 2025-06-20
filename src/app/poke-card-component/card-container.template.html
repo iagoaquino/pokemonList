@@ -10,5 +10,14 @@
     pokemon_name="{{name}}"
   ></pokemon-description-modal>
   <ion-button (click)="modalHandler(true)">Description</ion-button>
+  <ng-content *ngIf="favorite_list.includes(name), else notFavorite">
+    <ion-button (click)="removeFavorite(name)"
+      ><ion-icon slot="icon-only" style="color: yellow" name="star"></ion-icon
+    ></ion-button>
+  </ng-content>
+  <ng-template #notFavorite
+    ><ion-button (click)="insertFavorite(name)"
+      ><ion-icon slot="icon-only" name="star"></ion-icon></ion-button
+  ></ng-template>
   <ng-content></ng-content>
 </ion-card>
