@@ -1,22 +1,24 @@
-<ion-card class="{{main_type}} text-center">
+<ion-card class="{{main_type}} text-center" style="height: 350px">
   <ion-card-header>
     <ion-img src="{{img_url}}" alt="{{name}} images"></ion-img>
   </ion-card-header>
-  <ion-card-content>{{name}} </ion-card-content>
+  <ion-card-content style="height: 25%">{{name}} </ion-card-content>
   <pokemon-description-modal
     (modalHandler)="modalHandler($event)"
     [is_open]="is_open"
     [pokemon_info]="[pokemon_info]"
     pokemon_name="{{name}}"
   ></pokemon-description-modal>
-  <ion-button (click)="modalHandler(true)">Description</ion-button>
+  <ion-button (click)="modalHandler(true)" class="{{main_type}}"
+    ><ion-icon slot="icon-only" name="list-outline"></ion-icon
+  ></ion-button>
   <ng-content *ngIf="favorite_list.includes(name), else notFavorite">
-    <ion-button (click)="removeFavorite(name)"
-      ><ion-icon slot="icon-only" style="color: yellow" name="star"></ion-icon
-    ></ion-button>
+    <ion-button (click)="removeFavorite(name)" class="{{main_type}}"
+      ><ion-icon slot="icon-only" style="color: yellow" name="star"
+    /></ion-button>
   </ng-content>
   <ng-template #notFavorite
-    ><ion-button (click)="insertFavorite(name)"
+    ><ion-button (click)="insertFavorite(name)" class="{{main_type}}"
       ><ion-icon slot="icon-only" name="star"></ion-icon></ion-button
   ></ng-template>
   <ng-content></ng-content>
