@@ -3,7 +3,11 @@ import FavoriteEventInterface from '../interfaces/favorite-handler.interface';
 @Component({
   selector: 'card-container',
   templateUrl: './card-container.template.html',
-  styleUrls: ['./card-container.styles.scss', '../types-color.style.scss'],
+  styleUrls: [
+    './card-container.styles.scss',
+    '../types-color.style.scss',
+    '../globals.style.scss',
+  ],
   standalone: false,
 })
 export default class CardContainerComponent {

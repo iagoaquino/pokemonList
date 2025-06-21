@@ -5,6 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: [
     './pokemon-description-modal.style.scss',
     '../types-color.style.scss',
+    '../globals.style.scss',
   ],
   templateUrl: './pokemon-description-modal.template.html',
   standalone: false,
