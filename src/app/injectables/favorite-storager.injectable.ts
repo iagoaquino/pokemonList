@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export default class FavoriteStorager {
   constructor() {}
   private favorite_list: Array<string> = [];
