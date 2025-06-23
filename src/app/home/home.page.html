@@ -1,15 +1,24 @@
-<ng-content [fullscreen]="true" class="ion-padding">
-  <ion-header style="height: 5vh">
-    <ion-title class="text-center" style="margin-top: 10px; margin-bottom: auto"
-      >My Pokedex</ion-title
+<ion-content [fullscreen]="true" class="ion-padding main-background-color">
+  <ion-header style="height: 10vh" class="secondary-background-color">
+    <ion-title class="text-center"
+      ><ion-row style="margin-top: 2rem" class="ion-justify-content-center"
+        >My Pokedex</ion-row
+      ></ion-title
     >
   </ion-header>
-  <ion-grid style="margin-top: 10vh">
+  <ion-grid
+    style="margin-top: 10vh; margin-left: 0px"
+    class="main-background-color"
+  >
     <ion-row>
-      <ion-col size="6" class="scrolable full-page-height">
-        <pokemon-list-component />
+      <ion-col sizeMd="12" sizeXs="7" style="height: 50vh">
+        <search-component
+          (types_sender)="handleFilterChange($event)"
+        ></search-component>
       </ion-col>
-      <ion-col size="6" class="scrolable"> Search bar goes here </ion-col>
+      <ion-col sizeMd="12" sizeXs="5" class="scrolable full-page-height">
+        <pokemon-list-component [filter_list]="get_types_filter" />
+      </ion-col>
     </ion-row>
   </ion-grid>
-</ng-content>
+</ion-content>
