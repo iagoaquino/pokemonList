@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import FavoriteEventInterface from '../interfaces/favorite-handler.interface';
+import { IonicModule } from '@ionic/angular';
+import PokemonDescriptionModal from '../pokemon-description-component/pokemon-description-modal.component';
+import { CommonModule } from '@angular/common';
+import { DesirableDataInterface } from '../interfaces/desirable-data.interface';
+
 @Component({
   selector: 'card-container',
   templateUrl: './card-container.template.html',
@@ -8,14 +13,15 @@ import FavoriteEventInterface from '../interfaces/favorite-handler.interface';
     '../types-color.style.scss',
     '../globals.style.scss',
   ],
-  standalone: false,
+  imports: [IonicModule, PokemonDescriptionModal, CommonModule],
+  standalone: true,
 })
 export default class CardContainerComponent {
   @Input() favorite_list!: Array<string>;
   @Input() img_url: string | undefined;
   @Input() name!: string;
   @Input() main_type: string | undefined;
-  @Input() pokemon_info: Record<string, any> | undefined;
+  @Input() pokemon_info!: DesirableDataInterface;
   @Input() is_open?: boolean | null = false;
 
   @Output() favoriteHandler = new EventEmitter<FavoriteEventInterface>();
