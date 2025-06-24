@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
+import FavoriteEventInterface from '../interfaces/favorite-handler.interface';
 
 import ApiHandler from '../injectables/data-handler.injectable';
 import PokemonListComponent from '../pokemon-list-component/pokemon-list.component';

@@ -16,16 +16,16 @@ export default class DataHandler {
   public getPokemonsData(initial_position: number, final_position: number) {
     return this.data_storager.getPokemonList(initial_position, final_position);
   }
-
-  public getFavoriteList(): Array<string> {
+  
+  public getFavoriteList() {
     return this.favorite_list_handler.get_list();
   }
 
-  public deleteFavorite(pokemon_name: string): void {
+  public deleteFavorite(pokemon_name: string) {
     this.favorite_list_handler.delete_one(pokemon_name);
   }
 
-  public addNewFavorite(pokemon_name: string): void {
+  public addNewFavorite(pokemon_name: string) {
     this.favorite_list_handler.insert_new(pokemon_name);
   }
 }
