@@ -1,71 +1,24 @@
-<ion-content>
-  <ion-grid [fixed]="true">
+<ion-content [fullscreen]="true" class="ion-padding main-background-color">
+  <ion-header style="height: 10vh" class="secondary-background-color">
+    <ion-title class="text-center"
+      ><ion-row style="margin-top: 2rem" class="ion-justify-content-center"
+        >My Pokedex</ion-row
+      ></ion-title
+    >
+  </ion-header>
+  <ion-grid
+    style="margin-top: 10vh; margin-left: 0px"
+    class="main-background-color"
+  >
     <ion-row>
-      <ion-col class="text-center" size="4">
-        <ion-button
-          (click)="navigationHandler('prev')"
-          *ngIf="prev_url;else beginingOfList"
-          >Prev</ion-button
-        >
-        <ng-template #beginingOfList>
-          <ion-button [disabled]="true">Prev</ion-button></ng-template
-        >
+      <ion-col sizeMd="12" sizeXs="7" style="height: 50vh">
+        <search-component
+          (types_sender)="handleFilterChange($event)"
+        ></search-component>
       </ion-col>
-      <ion-col size="4">
-        <ion-button (click)="SwapShowOnlyFavorite()"
-          >Show Favorite pokemons</ion-button
-        >
-      </ion-col>
-      <ion-col class="text-center" size="4">
-        <ion-button
-          (click)="navigationHandler('next')"
-          *ngIf="next_url;else endOfList"
-          >Next</ion-button
-        >
-        <ng-template #endOfList>
-          <ion-button [disabled]="true">Next</ion-button></ng-template
-        >
+      <ion-col sizeMd="12" sizeXs="5" class="scrolable full-page-height">
+        <pokemon-list-component [filter_list]="get_types_filter" />
       </ion-col>
     </ion-row>
-    <ng-content *ngIf="!show_only_favorite, else showFavorite">
-      <ion-row>
-        <ion-col
-          *ngFor="for let pokemon of pokemon_list"
-          sizeMd="4"
-          sizeSm="12"
-          sizeXs="12"
-        >
-          <card-container
-            (favoriteHandler)="favoritehandler($event)"
-            img_url="{{pokemon_data[pokemon['name']]['sprites']['front_default']}}"
-            name="{{pokemon['name']}}"
-            main_type="{{pokemon_data[pokemon['name']]['types'][0]}}"
-            [pokemon_info]="pokemon_data[pokemon['name']]"
-            [favorite_list]="favorite_list"
-          >
-          </card-container>
-        </ion-col>
-      </ion-row>
-    </ng-content>
-    <ng-template #showFavorite>
-      <ion-row>
-        <ion-col
-          *ngFor="for let name of favorite_list"
-          sizeMd="4"
-          sizeSm="12"
-          sizeXs="12"
-        >
-          <card-container
-            (favoriteHandler)="favoritehandler($event)"
-            img_url="{{favorite_pokemon_data[name]['sprites']['front_default']}}"
-            name="{{name}}"
-            main_type="{{favorite_pokemon_data[name]['types'][0]}}"
-            [pokemon_info]="favorite_pokemon_data[name]"
-            [favorite_list]="favorite_list"
-          >
-          </card-container>
-        </ion-col>
-      </ion-row>
-    </ng-template>
   </ion-grid>
 </ion-content>

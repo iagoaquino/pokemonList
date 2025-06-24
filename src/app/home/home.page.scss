@@ -1,15 +1,15 @@
-
-$primary-color: #115555;
-$secondary-color: #ffffff;
-$third-color: #332525;
-
-
-
-.text-center{
-    text-align: center;
+.text-center {
+  text-align: center;
 }
 
-.primary-background{
-    background-color: $primary-color;
-    color: $secondary-color;
+.scrolable {
+  overflow-y: auto;
+}
+
+.half-page-height {
+  height: 50vh;
+}
+
+.full-page-height {
+  height: 80vh;
 }

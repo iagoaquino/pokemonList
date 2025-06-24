@@ -1,3 +1,13 @@
+interface DataKeeperInterface {
+  data_stored: Record<string, DesirableDataInterface>;
+  name_list: Array<string>;
+  last_collected_date: Date;
+}
+
+interface GetPokemonsDataInterface {
+  name_list: Array<string>;
+  pokemons_data: Record<string, DesirableDataInterface>;
+}
 interface SpritesInterface {
   back_default: string;
   front_default: string;
@@ -32,4 +42,6 @@ export {
   StatusInterface,
   SpritesInterface,
   status_map_order,
+  DataKeeperInterface,
+  GetPokemonsDataInterface,
 };
