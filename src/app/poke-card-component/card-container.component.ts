@@ -18,9 +18,7 @@ import { DesirableDataInterface } from '../interfaces/desirable-data.interface';
 })
 export default class CardContainerComponent {
   @Input() favorite_list!: Array<string>;
-  @Input() favorite_list!: Array<string>;
   @Input() img_url: string | undefined;
-  @Input() name!: string;
   @Input() name!: string;
   @Input() main_type: string | undefined;
   @Input() pokemon_info!: DesirableDataInterface;
@@ -28,26 +26,8 @@ export default class CardContainerComponent {
 
   @Output() favoriteHandler = new EventEmitter<FavoriteEventInterface>();
 
-  @Output() favoriteHandler = new EventEmitter<FavoriteEventInterface>();
-
   modalHandler(event: boolean | Event) {
     this.is_open = event as boolean;
-  }
-
-  insertFavorite(pokemon_name: string) {
-    this.favoriteHandler.emit({
-      name: pokemon_name,
-      type: 'insertion',
-      pokemon_data: this.pokemon_info as Record<string, any>,
-    });
-  }
-
-  removeFavorite(pokemon_name: string) {
-    this.favoriteHandler.emit({
-      name: pokemon_name,
-      type: 'remotion',
-      pokemon_data: undefined,
-    });
   }
 
   insertFavorite(pokemon_name: string) {

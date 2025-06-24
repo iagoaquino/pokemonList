@@ -16,7 +16,7 @@ export default class DataHandler {
   public getPokemonsData(initial_position: number, final_position: number) {
     return this.data_storager.getPokemonList(initial_position, final_position);
   }
-  
+
   public getFavoriteList() {
     return this.favorite_list_handler.get_list();
   }
