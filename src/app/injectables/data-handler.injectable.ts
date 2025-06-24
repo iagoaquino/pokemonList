@@ -9,14 +9,12 @@ export default class DataHandler {
     private favorite_list_handler: FavoriteStorager
   ) {}
 
-  async getPokemonData(url: string | null) {
-    const response = await (await fetch(url as string)).json();
-    await this.data_storager.updateDataStoraged(response['results']);
-    return response;
+  async updateDateStored(types_filter: Array<string>): Promise<void> {
+    this.data_storager.updateData(types_filter);
   }
 
-  public getDataStored() {
-    return this.data_storager.getPokemonsCurrentData();
+  public getPokemonsData(initial_position: number, final_position: number) {
+    return this.data_storager.getPokemonList(initial_position, final_position);
   }
 
   public getFavoriteList() {

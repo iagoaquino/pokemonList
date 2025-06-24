@@ -1,0 +1,34 @@
+<ion-content class="secondary-background-color">
+  <ion-grid>
+    <ion-row style="margin-left: 0%" class="text-center">
+      <ion-col sizeXs="6" sizeMd="2" *ngFor="let type of get_selected_types">
+        <ion-button class="{{type}}" style="width: 80px"> {{type}} </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col sizeMd="2" sizeXs="12">
+        <div *ngFor="let type of first_half_types">
+          <ion-checkbox
+            [checked]="true"
+            (ionChange)="checkboxHandler(type)"
+            labelPlacement="end"
+            >{{type}}</ion-checkbox
+          >
+        </div>
+      </ion-col>
+      <ion-col sizeMd="2" sizeXs="12">
+        <div *ngFor="let type of second_half_types">
+          <ion-checkbox
+            [checked]="true"
+            (ionChange)="checkboxHandler(type)"
+            labelPlacement="end"
+            >{{type}}</ion-checkbox
+          >
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-button (click)="sendTypes()">Apply filter</ion-button>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./home/home.module').then((m) => m.HomePageModule),
+      import('./home/home-routing.module').then((m) => m.default),
   },
 ];
 @NgModule({
