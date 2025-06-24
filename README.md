@@ -38,4 +38,4 @@ After installing all dependencies run the command:
 
 ## final considerations
 
-This application was my first connection with angular and ionic so I would it was a pretty good start, thanks to my experience with NestJS I could easily grasp how the Ionic+Angular works.
+This application was my first connection with angular and ionic so I would say it was a pretty good start, thanks to my experience with NestJS I could easily grasp how the Ionic+Angular works.
