@@ -22,8 +22,8 @@ export default class PokemonListComponent {
   @Input() filter_list: Array<string> = [];
 
   private initial_position: number = 0;
-  private final_position: number = 9;
-  private incrementer: number = 9;
+  private final_position: number = 12;
+  private incrementer: number = 12;
   private pokemon_list = [] as Array<string>;
   private pokemon_data: Record<string, any> = {};
   private favorite_list: Array<string> = [];

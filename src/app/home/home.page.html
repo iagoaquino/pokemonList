@@ -1,7 +1,7 @@
 <ion-content [fullscreen]="true" class="ion-padding main-background-color">
-  <ion-header style="height: 10vh" class="secondary-background-color">
-    <ion-title class="text-center"
-      ><ion-row style="margin-top: 2rem" class="ion-justify-content-center"
+  <ion-header class="secondary-background-color page-header ion-padding">
+    <ion-title
+      ><ion-row class="ion-justify-content-center"
         >My Pokedex</ion-row
       ></ion-title
     >
@@ -10,13 +10,20 @@
     style="margin-top: 10vh; margin-left: 0px"
     class="main-background-color"
   >
+    <search-component
+      [is_open]="get_is_filter_open"
+      (modal_controller)="closeModal()"
+      (types_sender)="handleFilterChange($event)"
+    ></search-component>
+    <ion-row class="text-center">
+      <ion-col
+        ><ion-button (click)="openModal()"
+          >Configurate filter</ion-button
+        ></ion-col
+      >
+    </ion-row>
     <ion-row>
-      <ion-col sizeMd="12" sizeXs="7" style="height: 50vh">
-        <search-component
-          (types_sender)="handleFilterChange($event)"
-        ></search-component>
-      </ion-col>
-      <ion-col sizeMd="12" sizeXs="5" class="scrolable full-page-height">
+      <ion-col sizeMd="12" sizeXs="12" class="full-page-height">
         <pokemon-list-component [filter_list]="get_types_filter" />
       </ion-col>
     </ion-row>

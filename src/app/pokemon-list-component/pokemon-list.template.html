@@ -1,72 +1,83 @@
-<ion-grid class="secondary-background-color">
-  <ion-row>
-    <ion-col class="text-center" size="6" sizeXs="6">
-      <ion-button
-        (click)="navigationHandler('prev')"
-        *ngIf="get_initial_position !== 0;else beginingOfList"
-        ><ion-icon name="chevron-back-outline"
-      /></ion-button>
-      <ng-template #beginingOfList>
-        <ion-button [disabled]="true"
-          ><ion-icon name="chevron-back-outline" /></ion-button
-      ></ng-template>
-    </ion-col>
+<ion-content>
+  <ion-grid class="secondary-background-color">
+    <ion-row>
+      <ion-col class="text-center" size="6" sizeXs="6">
+        <ion-button
+          (click)="navigationHandler('prev')"
+          *ngIf="get_initial_position !== 0;else beginingOfList"
+          ><ion-icon name="chevron-back-outline"
+        /></ion-button>
+        <ng-template #beginingOfList>
+          <ion-button [disabled]="true"
+            ><ion-icon name="chevron-back-outline" /></ion-button
+        ></ng-template>
+      </ion-col>
 
-    <ion-col class="text-center" size="6" sizeXs="6">
-      <ion-button
-        (click)="navigationHandler('next')"
-        *ngIf="get_final_position !== 1304;else endOfList"
-        ><ion-icon name="chevron-forward-outline"
-      /></ion-button>
-      <ng-template #endOfList>
-        <ion-button [disabled]="true"
-          ><ion-icon name="chevron-forward-outline" /></ion-button
-      ></ng-template>
-    </ion-col>
-    <ion-col class="text-center" size="12" sizeXs="12">
-      <ion-button (click)="SwapShowOnlyFavorite()"
-        >Show Favorite pokemons</ion-button
-      >
-    </ion-col>
-  </ion-row>
-  <ng-content *ngIf="!get_show_only_favorite, else showFavorite">
-    <ion-row>
-      <ion-col
-        *ngFor="for let pokemon of get_pokemon_list"
-        sizeMd="4"
-        sizeSm="12"
-        sizeXs="12"
-      >
-        <card-container
-          (favoriteHandler)="favoritehandler($event)"
-          img_url="{{get_pokemon_data[pokemon]['sprites']['front_default']}}"
-          name="{{pokemon}}"
-          main_type="{{get_pokemon_data[pokemon]['types'][0]}}"
-          [pokemon_info]="get_pokemon_data[pokemon]"
-          [favorite_list]="get_favorite_list"
-        >
-        </card-container>
+      <ion-col class="text-center" size="6" sizeXs="6">
+        <ion-button
+          (click)="navigationHandler('next')"
+          *ngIf="get_final_position !== 1304;else endOfList"
+          ><ion-icon name="chevron-forward-outline"
+        /></ion-button>
+        <ng-template #endOfList>
+          <ion-button [disabled]="true"
+            ><ion-icon name="chevron-forward-outline" /></ion-button
+        ></ng-template>
       </ion-col>
     </ion-row>
-  </ng-content>
-  <ng-template #showFavorite>
-    <ion-row>
-      <ion-col
-        *ngFor="for let name of get_favorite_list"
-        sizeMd="4"
-        sizeSm="12"
-        sizeXs="12"
-      >
-        <card-container
-          (favoriteHandler)="favoritehandler($event)"
-          img_url="{{get_favorite_pokemon_data[name]['sprites']['front_default']}}"
-          name="{{name}}"
-          main_type="{{get_favorite_pokemon_data[name]['types'][0]}}"
-          [pokemon_info]="get_favorite_pokemon_data[name]"
-          [favorite_list]="get_favorite_list"
+    <ng-content *ngIf="!get_show_only_favorite, else showFavorite">
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="text-center" size="12" sizeXs="12">
+          <ion-button (click)="SwapShowOnlyFavorite()"
+            >Show Favorite pokemons</ion-button
+          >
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col
+          *ngFor="for let pokemon of get_pokemon_list"
+          sizeMd="2"
+          sizeSm="4"
+          size="12"
         >
-        </card-container>
-      </ion-col>
-    </ion-row>
-  </ng-template>
-</ion-grid>
+          <card-container
+            (favoriteHandler)="favoritehandler($event)"
+            img_url="{{get_pokemon_data[pokemon]['sprites']['front_default']}}"
+            name="{{pokemon}}"
+            main_type="{{get_pokemon_data[pokemon]['types'][0]}}"
+            [pokemon_info]="get_pokemon_data[pokemon]"
+            [favorite_list]="get_favorite_list"
+          >
+          </card-container>
+        </ion-col>
+      </ion-row>
+    </ng-content>
+    <ng-template #showFavorite>
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="text-center" size="12" sizeXs="12">
+          <ion-button (click)="SwapShowOnlyFavorite()"
+            >Show All pokemons</ion-button
+          >
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col
+          *ngFor="for let name of get_favorite_list"
+          sizeMd="3"
+          sizeSm="4"
+          size="12"
+        >
+          <card-container
+            (favoriteHandler)="favoritehandler($event)"
+            img_url="{{get_favorite_pokemon_data[name]['sprites']['front_default']}}"
+            name="{{name}}"
+            main_type="{{get_favorite_pokemon_data[name]['types'][0]}}"
+            [pokemon_info]="get_favorite_pokemon_data[name]"
+            [favorite_list]="get_favorite_list"
+          >
+          </card-container>
+        </ion-col>
+      </ion-row>
+    </ng-template>
+  </ion-grid>
+</ion-content>
