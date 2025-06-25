@@ -1,8 +1,8 @@
-<ion-card class="{{main_type}} text-center card-container">
+<ion-card class="{{main_type}} text-center">
   <ion-card-header>
     <ion-img src="{{img_url}}" alt="{{name}} images"></ion-img>
   </ion-card-header>
-  <ion-card-content style="height: 10%">{{name}} </ion-card-content>
+  <ion-row class="ion-justify-content-center">{{name}} </ion-row>
   <pokemon-description-modal
     (modalHandler)="modalHandler($event)"
     [is_open]="is_open"
