@@ -11,11 +11,13 @@ import SearchComponent from '../search-component/search.component';
   selector: 'home-page',
   templateUrl: './home.page.html',
   imports: [CommonModule, PokemonListComponent, SearchComponent, IonicModule],
-  styleUrls: ['home.page.scss', '../globals.style.scss'],
+  styleUrls: ['./home.page.scss', '../globals.style.scss'],
   providers: [ApiHandler],
   standalone: true,
 })
 export default class HomePage {
+  private is_filter_open: boolean = false;
+
   private types_filter: Array<string> = [
     'fire',
     'water',
@@ -37,6 +39,18 @@ export default class HomePage {
     'dark',
   ];
   @Output() handle_update = new EventEmitter<boolean>();
+
+  get get_is_filter_open() {
+    return this.is_filter_open;
+  }
+
+  openModal() {
+    this.is_filter_open = true;
+  }
+
+  closeModal() {
+    this.is_filter_open = false;
+  }
 
   handleFilterChange(event: Event | Array<string>) {
     this.types_filter = event as Array<string>;

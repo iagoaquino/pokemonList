@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 
 @Component({
@@ -14,7 +14,8 @@ import { IonicModule } from '@ionic/angular';
 })
 export default class SearchComponent {
   @Output() types_sender = new EventEmitter<Array<string>>();
-
+  @Output() modal_controller = new EventEmitter<void>();
+  @Input() is_open: boolean = false;
   private possible_types: Array<string> = [
     'fire',
     'water',
@@ -63,5 +64,9 @@ export default class SearchComponent {
   }
   sendTypes() {
     this.types_sender.emit(this.selected_types);
+  }
+
+  closeModal() {
+    this.modal_controller.emit();
   }
 }
